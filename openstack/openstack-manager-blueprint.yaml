@@ -47,6 +47,10 @@ inputs:
   flavor_id:
     type: string
 
+  availability_zone:
+    default: ''
+    type: string
+
   external_network_name:
     type: string
 
@@ -141,6 +145,8 @@ node_templates:
       subnet:
         ip_version: 4
         cidr: 10.67.79.0/24
+        dns_nameservers: 
+            - 8.8.8.8
       openstack_config: { get_property: [openstack_configuration, openstack_config] }
     relationships:
       - target: management_network
@@ -226,6 +232,7 @@ node_templates:
       server:
         image: { get_input: image_id }
         flavor: { get_input: flavor_id }
+        availability_zone: { get_input: availability_zone }
       management_network_name: { get_property: [management_network, resource_id] }
       openstack_config: { get_property: [openstack_configuration, openstack_config] }
     relationships:

@@ -7,6 +7,7 @@ manager_public_key_name: ''
 agent_public_key_name: ''
 image_id: ''
 flavor_id: ''
+availability_zone: ''
 external_network_name: ''
 
 use_existing_manager_keypair: false
